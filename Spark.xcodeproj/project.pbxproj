@@ -30,6 +30,9 @@
 		F7B6E4ED2AC5AE1300303D70 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4EC2AC5AE1300303D70 /* RepositoryError.swift */; };
 		F7B6E4F02AC5AE7500303D70 /* RestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */; };
 		F7B6E5022AC5C26E00303D70 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E5012AC5C26E00303D70 /* CameraView.swift */; };
+		F7B6E5052AC5CCFC00303D70 /* CameraViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E5042AC5CCFC00303D70 /* CameraViewmodel.swift */; };
+		F7B6E5072AC5D51600303D70 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E5062AC5D51600303D70 /* ReportView.swift */; };
+		F7B6E5092AC5D97A00303D70 /* DTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E5082AC5D97A00303D70 /* DTOs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRepository.swift; sourceTree = "<group>"; };
 		F7B6E4F42AC5B36E00303D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F7B6E5012AC5C26E00303D70 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F7B6E5042AC5CCFC00303D70 /* CameraViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewmodel.swift; sourceTree = "<group>"; };
+		F7B6E5062AC5D51600303D70 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		F7B6E5082AC5D97A00303D70 /* DTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +136,7 @@
 				F7B6E4EC2AC5AE1300303D70 /* RepositoryError.swift */,
 				F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */,
 				2600081C2AC5C2A500518B79 /* ImageIdRecognizer.swift */,
+				F7B6E5082AC5D97A00303D70 /* DTOs.swift */,
 			);
 			path = repos;
 			sourceTree = "<group>";
@@ -170,7 +177,7 @@
 		F7B6E4F52AC5B96D00303D70 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				F7B6E5032AC5C6F200303D70 /* IncidentView */,
+				F7B6E5032AC5C6F200303D70 /* ReportView */,
 				F7B6E5002AC5C25C00303D70 /* Camera */,
 			);
 			path = features;
@@ -180,15 +187,17 @@
 			isa = PBXGroup;
 			children = (
 				F7B6E5012AC5C26E00303D70 /* CameraView.swift */,
+				F7B6E5042AC5CCFC00303D70 /* CameraViewmodel.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		F7B6E5032AC5C6F200303D70 /* IncidentView */ = {
+		F7B6E5032AC5C6F200303D70 /* ReportView */ = {
 			isa = PBXGroup;
 			children = (
+				F7B6E5062AC5D51600303D70 /* ReportView.swift */,
 			);
-			path = IncidentView;
+			path = ReportView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,14 +281,17 @@
 				F7B6E4ED2AC5AE1300303D70 /* RepositoryError.swift in Sources */,
 				F7B6E4DC2AC5AAA500303D70 /* URLSessionHttpClient.swift in Sources */,
 				F7B6E4D82AC5AA1600303D70 /* HttpError.swift in Sources */,
+				F7B6E5052AC5CCFC00303D70 /* CameraViewmodel.swift in Sources */,
 				F7B6E4CE2AC5A9C500303D70 /* DataCoder.swift in Sources */,
 				F7B6E4E02AC5AB8500303D70 /* ReachabilityType.swift in Sources */,
 				F7B6E4D62AC5AA0800303D70 /* HttpDataDownloader.swift in Sources */,
 				2600081D2AC5C2A500518B79 /* ImageIdRecognizer.swift in Sources */,
+				F7B6E5072AC5D51600303D70 /* ReportView.swift in Sources */,
 				F7B6E4C42AC58D8200303D70 /* ImagePickerView.swift in Sources */,
 				F7B6E4E72AC5AD6F00303D70 /* DependencyContainer.swift in Sources */,
 				F7B6E4D02AC5A9DF00303D70 /* HttpClient.swift in Sources */,
 				F7B6E4B62AC587EA00303D70 /* SparkApp.swift in Sources */,
+				F7B6E5092AC5D97A00303D70 /* DTOs.swift in Sources */,
 				F7B6E4D22AC5A9EE00303D70 /* HttpClientError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,6 +22,9 @@ class RestRepository {
         let recognizer = ImageIdRecognizer()
         let id = recognizer.extractPanelIdFromImage(image: image)
         
+        print("\(image)")
+        print("\(id)")
+        
         let urlSuffix = "/api/img"
         
         guard let encoded = "\(baseUrl)\(urlSuffix)".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
