@@ -11,6 +11,8 @@
 		F7B6E4B82AC587EA00303D70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4B72AC587EA00303D70 /* ContentView.swift */; };
 		F7B6E4BA2AC587EB00303D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B6E4B92AC587EB00303D70 /* Assets.xcassets */; };
 		F7B6E4BD2AC587EB00303D70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B6E4BC2AC587EB00303D70 /* Preview Assets.xcassets */; };
+		F7B6E4C42AC58D8200303D70 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4C32AC58D8200303D70 /* ImagePickerView.swift */; };
+		F7B6E4C62AC58DC900303D70 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4C52AC58DC900303D70 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		F7B6E4B72AC587EA00303D70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F7B6E4B92AC587EB00303D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B6E4BC2AC587EB00303D70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F7B6E4C32AC58D8200303D70 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		F7B6E4C52AC58DC900303D70 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +55,13 @@
 		F7B6E4B42AC587EA00303D70 /* Spark */ = {
 			isa = PBXGroup;
 			children = (
+				F7B6E4C72AC599B300303D70 /* repos */,
 				F7B6E4B52AC587EA00303D70 /* SparkApp.swift */,
 				F7B6E4B72AC587EA00303D70 /* ContentView.swift */,
 				F7B6E4B92AC587EB00303D70 /* Assets.xcassets */,
 				F7B6E4BB2AC587EB00303D70 /* Preview Content */,
+				F7B6E4C32AC58D8200303D70 /* ImagePickerView.swift */,
+				F7B6E4C52AC58DC900303D70 /* AppCoordinator.swift */,
 			);
 			path = Spark;
 			sourceTree = "<group>";
@@ -65,6 +72,13 @@
 				F7B6E4BC2AC587EB00303D70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F7B6E4C72AC599B300303D70 /* repos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B6E4C62AC58DC900303D70 /* AppCoordinator.swift in Sources */,
 				F7B6E4B82AC587EA00303D70 /* ContentView.swift in Sources */,
+				F7B6E4C42AC58D8200303D70 /* ImagePickerView.swift in Sources */,
 				F7B6E4B62AC587EA00303D70 /* SparkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +286,7 @@
 				DEVELOPMENT_TEAM = B729NKFF98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your your permission to use the camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +316,7 @@
 				DEVELOPMENT_TEAM = B729NKFF98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your your permission to use the camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
