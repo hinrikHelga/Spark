@@ -16,7 +16,9 @@ class RestRepository {
         let imageData: Data = uiImage.jpegData(compressionQuality: 0.1) ?? Data()
         let imageStr: String = imageData.base64EncodedString()
         
-                                
+        let recognizer = ImageIdRecognizer()
+        let id = recognizer.extractPanelIdFromImage(image: image)
+        
         guard let encoded = "https://hackathon2023-spark.vercel.app/api/img".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
             print("encoded")
             return

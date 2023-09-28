@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2600081B2AC5C18000518B79 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2600081A2AC5C18000518B79 /* Vision.framework */; };
+		2600081D2AC5C2A500518B79 /* ImageIdRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600081C2AC5C2A500518B79 /* ImageIdRecognizer.swift */; };
 		F7B6E4B62AC587EA00303D70 /* SparkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4B52AC587EA00303D70 /* SparkApp.swift */; };
 		F7B6E4BA2AC587EB00303D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B6E4B92AC587EB00303D70 /* Assets.xcassets */; };
 		F7B6E4BD2AC587EB00303D70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B6E4BC2AC587EB00303D70 /* Preview Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2600081A2AC5C18000518B79 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		2600081C2AC5C2A500518B79 /* ImageIdRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageIdRecognizer.swift; path = Spark/repos/ImageIdRecognizer.swift; sourceTree = SOURCE_ROOT; };
 		F7B6E4B22AC587EA00303D70 /* Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B6E4B52AC587EA00303D70 /* SparkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkApp.swift; sourceTree = "<group>"; };
 		F7B6E4B92AC587EB00303D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,17 +65,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2600081B2AC5C18000518B79 /* Vision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260008192AC5C18000518B79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2600081A2AC5C18000518B79 /* Vision.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F7B6E4A92AC587EA00303D70 = {
 			isa = PBXGroup;
 			children = (
 				F7B6E4B42AC587EA00303D70 /* Spark */,
 				F7B6E4B32AC587EA00303D70 /* Products */,
+				260008192AC5C18000518B79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +130,7 @@
 				F7B6E4E12AC5AD1200303D70 /* RESTRepoHelper.swift */,
 				F7B6E4EC2AC5AE1300303D70 /* RepositoryError.swift */,
 				F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */,
+				2600081C2AC5C2A500518B79 /* ImageIdRecognizer.swift */,
 			);
 			path = repos;
 			sourceTree = "<group>";
@@ -244,6 +259,7 @@
 				F7B6E4CE2AC5A9C500303D70 /* DataCoder.swift in Sources */,
 				F7B6E4E02AC5AB8500303D70 /* ReachabilityType.swift in Sources */,
 				F7B6E4D62AC5AA0800303D70 /* HttpDataDownloader.swift in Sources */,
+				2600081D2AC5C2A500518B79 /* ImageIdRecognizer.swift in Sources */,
 				F7B6E4C42AC58D8200303D70 /* ImagePickerView.swift in Sources */,
 				F7B6E4E72AC5AD6F00303D70 /* DependencyContainer.swift in Sources */,
 				F7B6E4D02AC5A9DF00303D70 /* HttpClient.swift in Sources */,
