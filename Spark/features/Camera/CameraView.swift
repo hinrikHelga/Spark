@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CameraView.swift
 //  Spark
 //
 //  Created by Hinrik Helgason on 28/09/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CameraView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
@@ -32,18 +32,18 @@ struct ContentView: View {
                         .frame(width: 300, height: 300)
                 }
                 
-                Button("Camera") {
+                Button("Use camera") {
                     self.sourceType = .camera
                     self.isImagePickerDisplay.toggle()
                 }.padding()
                 
-                Button("photo") {
+                Button("From library") {
                     self.sourceType = .photoLibrary
                     self.isImagePickerDisplay.toggle()
                 }.padding()
                 
                 if let selectedImage = selectedImage {
-
+                    
                     Button(action: {
                         Task {
                             try await imgRepo.uploadImage(image: selectedImage)
@@ -61,9 +61,8 @@ struct ContentView: View {
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
+struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CameraView()
     }
 }

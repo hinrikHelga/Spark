@@ -29,7 +29,7 @@
 		F7B6E4EA2AC5ADDD00303D70 /* ApiConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4E92AC5ADDD00303D70 /* ApiConfigurationType.swift */; };
 		F7B6E4ED2AC5AE1300303D70 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4EC2AC5AE1300303D70 /* RepositoryError.swift */; };
 		F7B6E4F02AC5AE7500303D70 /* RestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */; };
-		F7B6E4FF2AC5BDF000303D70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E4FE2AC5BDF000303D70 /* ContentView.swift */; };
+		F7B6E5022AC5C26E00303D70 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6E5012AC5C26E00303D70 /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +57,7 @@
 		F7B6E4EC2AC5AE1300303D70 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		F7B6E4EF2AC5AE7500303D70 /* RestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRepository.swift; sourceTree = "<group>"; };
 		F7B6E4F42AC5B36E00303D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F7B6E4FE2AC5BDF000303D70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F7B6E5012AC5C26E00303D70 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,6 @@
 				F7B6E4BB2AC587EB00303D70 /* Preview Content */,
 				F7B6E4C32AC58D8200303D70 /* ImagePickerView.swift */,
 				F7B6E4C52AC58DC900303D70 /* AppCoordinator.swift */,
-				F7B6E4FE2AC5BDF000303D70 /* ContentView.swift */,
 			);
 			path = Spark;
 			sourceTree = "<group>";
@@ -171,8 +170,25 @@
 		F7B6E4F52AC5B96D00303D70 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				F7B6E5032AC5C6F200303D70 /* IncidentView */,
+				F7B6E5002AC5C25C00303D70 /* Camera */,
 			);
 			path = features;
+			sourceTree = "<group>";
+		};
+		F7B6E5002AC5C25C00303D70 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				F7B6E5012AC5C26E00303D70 /* CameraView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		F7B6E5032AC5C6F200303D70 /* IncidentView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IncidentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,12 +264,12 @@
 				F7B6E4DA2AC5AA2200303D70 /* HttpStatusCode.swift in Sources */,
 				F7B6E4E22AC5AD1200303D70 /* RESTRepoHelper.swift in Sources */,
 				F7B6E4F02AC5AE7500303D70 /* RestRepository.swift in Sources */,
+				F7B6E5022AC5C26E00303D70 /* CameraView.swift in Sources */,
 				F7B6E4D42AC5A9FA00303D70 /* HttpClientType.swift in Sources */,
 				F7B6E4EA2AC5ADDD00303D70 /* ApiConfigurationType.swift in Sources */,
 				F7B6E4C62AC58DC900303D70 /* AppCoordinator.swift in Sources */,
 				F7B6E4E52AC5AD4A00303D70 /* InjectedPropertyWrapper.swift in Sources */,
 				F7B6E4ED2AC5AE1300303D70 /* RepositoryError.swift in Sources */,
-				F7B6E4FF2AC5BDF000303D70 /* ContentView.swift in Sources */,
 				F7B6E4DC2AC5AAA500303D70 /* URLSessionHttpClient.swift in Sources */,
 				F7B6E4D82AC5AA1600303D70 /* HttpError.swift in Sources */,
 				F7B6E4CE2AC5A9C500303D70 /* DataCoder.swift in Sources */,

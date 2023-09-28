@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-class RestRepository {    
+class RestRepository {
+    
+    let baseUrl: String = "https://hackathon2023-spark.vercel.app"
+    
     func uploadImage(image: UIImage) async throws {
         // convert image into base 64
         
@@ -19,8 +22,10 @@ class RestRepository {
         let recognizer = ImageIdRecognizer()
         let id = recognizer.extractPanelIdFromImage(image: image)
         
-        guard let encoded = "https://hackathon2023-spark.vercel.app/api/img".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
-            print("encoded")
+        let urlSuffix = "/api/img"
+        
+        guard let encoded = "\(baseUrl)\(urlSuffix)".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
+            print("encoded failed")
             return
         }
         
@@ -29,14 +34,20 @@ class RestRepository {
             print("invalid URL")
             return
         }
-        
+                
         // create parameters
         let paramStr: String = "image=\(imageStr)"
-        let paramData: Data = paramStr.data(using: .utf8) ?? Data()
+//        let paramData: Data = paramStr.data(using: .utf8) ?? Data()
+        
+        let json: [String: Any] = ["image": "\(paramStr)", "id": "\(String(describing: id.first!))"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         var urlRequest: URLRequest = URLRequest(url: myURL)
         urlRequest.httpMethod = "POST"
-        urlRequest.httpBody = paramData
+        urlRequest.httpBody = jsonData
+        
+        // required for sending large data
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // required for sending large data
         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
