@@ -55,7 +55,6 @@
 		F7B6E4B42AC587EA00303D70 /* Spark */ = {
 			isa = PBXGroup;
 			children = (
-				F7B6E4C72AC599B300303D70 /* repos */,
 				F7B6E4B52AC587EA00303D70 /* SparkApp.swift */,
 				F7B6E4B72AC587EA00303D70 /* ContentView.swift */,
 				F7B6E4B92AC587EB00303D70 /* Assets.xcassets */,
@@ -72,13 +71,6 @@
 				F7B6E4BC2AC587EB00303D70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F7B6E4C72AC599B300303D70 /* repos */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = repos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
