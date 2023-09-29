@@ -22,6 +22,7 @@ struct CameraView: View {
                 VStack(alignment: .center) {
                     switch viewModel.state {
                     case .initial:
+                        Spacer()
                         Image(systemName: "sun.max")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -63,10 +64,13 @@ struct CameraView: View {
                     }
                     
                     if viewModel.state != .loading {
+                        Spacer()
                         Button(viewModel.state == .initial ? "Use camera" : "Retake photo") {
                             self.sourceType = .camera
                             self.isImagePickerDisplay.toggle()
-                        }.padding()
+                        }
+
+                        .padding()
                     }
                 }
                 .navigationBarTitle("Spark")

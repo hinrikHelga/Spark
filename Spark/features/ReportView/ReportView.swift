@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+enum Priority: String, CaseIterable, Identifiable {
+    var id: Self {
+        return self
+    }
+    
+    case high
+    case askToJoin
+    case automatic
+}
+
 struct ReportView: View {
     var incident: PaneIncidentDTO
     var approvedImage: UIImage
@@ -51,7 +61,7 @@ struct ReportView: View {
                     .padding()
 
                 Section {
-                    LabeledContent("Pane ID", value: incident.paneId ?? "")
+                    LabeledContent("ID", value: incident.paneId ?? "")
                 } header: {
                     Text("Pane")
                 }
@@ -59,9 +69,14 @@ struct ReportView: View {
                 
                 Section {
                     TextField("Latitude", text: $latitude)
+                } header: {
+                    Text("Latitude")
+                }
+                
+                Section {
                     TextField("Longitude", text: $longitude)
                 } header: {
-                    Text("Location")
+                    Text("Longitude")
                 }
 
                 Section {
