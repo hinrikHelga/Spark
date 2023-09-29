@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
+enum RepoError: Error {
+    case idIsNull(String)
+    case idWasNotFound(String)
+}
+
 class RestRepository {
     
-    let baseUrl: String = "https://hackathon2023-spark.vercel.app"
+    static let baseUrl: String = "https://hackathon2023-spark.vercel.app"
     
-    func uploadImage(image: UIImage) async throws {
+    func uploadImage(image: UIImage) async throws -> PaneIncidentDTO? {
         // convert image into base 64
         
         let uiImage: UIImage = image
@@ -22,28 +27,34 @@ class RestRepository {
         let recognizer = ImageIdRecognizer()
         let id = recognizer.extractPanelIdFromImage(image: image)
         
-        print("\(image)")
-        print("\(id)")
+        guard let id = id.first else {
+            throw RepoError.idIsNull("The ID of the pane was not captured.")
+        }
+        
+        print("Pane Id: \(id)")
         
         let urlSuffix = "/api/img"
+                
+        let json: [String: Any] = ["image": "\(imageStr)", "paneId": "\(String(describing: id))"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
-        guard let encoded = "\(baseUrl)\(urlSuffix)".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
+        return try await makeRequest(id: id, jsonData: jsonData)
+
+    }
+    
+    func makeRequest(id: String, jsonData: Data?) async throws -> PaneIncidentDTO {
+        let urlSuffix = "/api/img"
+        
+        guard let encoded = "\(RestRepository.baseUrl)\(urlSuffix)".addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
             print("encoded failed")
-            return
+            return PaneIncidentDTO()
         }
         
         // send request to server
         guard let myURL = URL(string: encoded) else {
             print("invalid URL")
-            return
+            return PaneIncidentDTO()
         }
-                
-        // create parameters
-        let paramStr: String = "image=\(imageStr)"
-//        let paramData: Data = paramStr.data(using: .utf8) ?? Data()
-        
-        let json: [String: Any] = ["image": "\(paramStr)", "id": "\(String(describing: id.first!))"]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         var urlRequest: URLRequest = URLRequest(url: myURL)
         urlRequest.httpMethod = "POST"
@@ -51,21 +62,26 @@ class RestRepository {
         
         // required for sending large data
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
         
-        // required for sending large data
-        urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        // send the request
-        URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            guard let data = data else {
-                print("invalid data")
-                return
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            
+            print(String(data: data, encoding: .utf8)!)
+
+                        
+            if data.isEmpty {
+                throw RepoError.idWasNotFound("The pane ID: \(id) was not found")
             }
             
-            // show response in string
-            let responseStr: String = String(data: data, encoding: .utf8) ?? ""
-            print(responseStr)
-        })
-        .resume()
+            let incident = try JSONDecoder().decode(PaneIncidentDTO.self, from: data)
+            
+            print(incident)
+            
+            return incident
+
+        } catch {
+            throw error
+        }
     }
 }

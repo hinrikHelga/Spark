@@ -19,15 +19,19 @@ enum CameraState: Equatable {
 class CameraViewModel: ObservableObject {
     @Published private(set) var state: CameraState = .initial
     @Published var selectedImage: UIImage = UIImage()
+    @Published var incident: PaneIncidentDTO?
     
     private let imgRepo: RestRepository = .init()
     
     func uploadImage(selectedImage: UIImage) async throws {
-        
+        if state == .loading { return }
+                
         state = .loading
         
         do {
-            try await imgRepo.uploadImage(image: selectedImage)
+            let incident = try await imgRepo.uploadImage(image: selectedImage)
+            self.incident = incident
+            
             state = .loaded
         } catch {
             state = .error(msg: error.localizedDescription)

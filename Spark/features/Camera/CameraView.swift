@@ -19,56 +19,61 @@ struct CameraView: View {
         let selectedImage = viewModel.selectedImage
         
         NavigationView {
-            VStack {
-                switch viewModel.state {
-                case .initial:
-                    Image(systemName: "sun.max")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                        .frame(width: 300, height: 300)
-                case .loading:
-                    Spacer()
-                    ProgressView()
-                    Spacer()
-                case .loaded:
-                    Image(uiImage: selectedImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Rectangle())
-                        .frame(width: 400, height: 400)
-                    NavigationLink(destination: ReportView()) {
-                        Text("Approve")
-                    }.padding()
-                case .error(msg: let msg):
-                    VStack {
+                VStack(alignment: .center) {
+                    switch viewModel.state {
+                    case .initial:
+                        Image(systemName: "sun.max")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 300)
+                    case .loading:
                         Spacer()
-                        Text(msg)
+                        ProgressView()
                         Spacer()
+                    case .loaded:
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Rectangle())
+                            .frame(width: 400, height: 400)
+                            .padding()
+                        
+                        Text(viewModel.incident?.description ?? "")
+                            .frame(maxHeight: .infinity)
+                            .padding()
+                        
+                        NavigationLink(destination: ReportView(incident: viewModel.incident ?? PaneIncidentDTO(), image: viewModel.selectedImage)) {
+                            Text("Approve")
+                        }.padding()
+                        
+                        NavigationLink(destination: ReportView(incident: PaneIncidentDTO(paneId: viewModel.incident?.paneId), image: viewModel.selectedImage)) {
+                            Text("Create own report")
+                        }.padding()
+                    case .error(msg: let msg):
+                        VStack {
+                            Spacer()
+                            Text(msg)
+                            Spacer()
+                        }
+                        
                     }
                     
+                    if viewModel.state != .loading {
+                        Button(viewModel.state == .initial ? "Use camera" : "Retake photo") {
+                            self.sourceType = .camera
+                            self.isImagePickerDisplay.toggle()
+                        }.padding()
+                    }
                 }
-                
-                Button(viewModel.state == .initial ? "Use camera" : "Retake photo") {
-                    self.sourceType = .camera
-                    self.isImagePickerDisplay.toggle()
-                }.padding()
-            }
-            .navigationBarTitle("Spark")
-            .onChange(of: viewModel.selectedImage, perform: { img in
-                Task {
-                    try await viewModel.uploadImage(selectedImage: img)
+                .navigationBarTitle("Photo")
+                .onChange(of: viewModel.selectedImage, perform: { img in
+                    Task {
+                        try await viewModel.uploadImage(selectedImage: img)
+                    }
+                })
+                .sheet(isPresented: self.$isImagePickerDisplay) {
+                    ImagePickerView(selectedImage: $viewModel.selectedImage, sourceType: self.sourceType)
                 }
-            })
-            .sheet(isPresented: self.$isImagePickerDisplay) {
-                ImagePickerView(selectedImage: $viewModel.selectedImage, sourceType: self.sourceType)
             }
-        }
     }
 }
-
-//struct CameraView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CameraView()
-//    }
-//}
