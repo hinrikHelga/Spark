@@ -11,19 +11,23 @@ enum Priority: String, CaseIterable, Identifiable {
     var id: Self {
         return self
     }
-    
-    case high
-    case askToJoin
-    case automatic
+
+    case ci = "CRITICAL_IMPACT"
+    case hi = "HIGH_IMPACT"
+    case mi = "MODERATE_IMPACT"
+    case li = "LOW_IMPACT"
+    case ni = "NEGLIGIBLE_IMPACT"
+    case mr = "MAINTENANCE_REQUIRED"
 }
 
 struct ReportView: View {
     var incident: PaneIncidentDTO
     var approvedImage: UIImage
+    @State var priority: Priority = .li
     
     @State var paneId: String
     @State var category: String
-    @State var priority: String
+//    @State var priority: String
     @State var description: String
     @State var latitude: String
     @State var longitude: String
@@ -33,7 +37,9 @@ struct ReportView: View {
         self.approvedImage = image
         _paneId = State(initialValue: incident.paneId ?? "")
         _category = State(initialValue: incident.category ?? "")
-        _priority = State(initialValue: incident.priority ?? "")
+        let pr = Priority(rawValue: incident.priority ?? "LOW_IMPACT")!
+        
+        _priority = State(initialValue: pr)
         _description = State(initialValue: incident.description ?? "")
         _latitude = State(initialValue: "\(String(describing: incident.location?.lat))")
         _longitude = State(initialValue: "\(String(describing: incident.location?.lng))")
@@ -86,9 +92,14 @@ struct ReportView: View {
                 }
                 
                 Section {
-                    TextField("Priority", text: $priority)
+                    Picker("Priority", selection: $priority) {
+                        ForEach(Priority.allCases) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+
                 } header: {
-                    Text("Priority")
+                    Text("Internet")
                 }
 
                 Section {

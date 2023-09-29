@@ -32,9 +32,7 @@ class RestRepository {
         }
         
         print("Pane Id: \(id)")
-        
-        let urlSuffix = "/api/img"
-                
+                        
         let json: [String: Any] = ["image": "\(imageStr)", "paneId": "\(String(describing: id))"]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
