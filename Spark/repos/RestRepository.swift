@@ -11,6 +11,7 @@ import UIKit
 enum RepoError: Error {
     case idIsNull(String)
     case idWasNotFound(String)
+    case unknown(String)
 }
 
 class RestRepository {
@@ -63,14 +64,19 @@ class RestRepository {
                 
         
         do {
-            let (data, _) = try await URLSession.shared.data(for: urlRequest)
-            
+            let (data, resp) = try await URLSession.shared.data(for: urlRequest)
+                        
             print(String(data: data, encoding: .utf8)!)
 
-                        
-            if data.isEmpty {
-                throw RepoError.idWasNotFound("The pane ID: \(id) was not found")
-            }
+            guard let httpResponse = resp as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {
+                
+                if let httpResponse = resp as? HTTPURLResponse, httpResponse.statusCode == 400 || httpResponse.statusCode == 404 {
+                    throw RepoError.idWasNotFound("The pane ID: \(id) was not found")
+                } else {
+                    throw RepoError.unknown("Something went wrong")
+                }
+              }
             
             let incident = try JSONDecoder().decode(PaneIncidentDTO.self, from: data)
             

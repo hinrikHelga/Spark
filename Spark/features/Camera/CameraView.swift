@@ -82,6 +82,6 @@ struct CameraView: View {
                 .sheet(isPresented: self.$isImagePickerDisplay) {
                     ImagePickerView(selectedImage: $viewModel.selectedImage, sourceType: self.sourceType)
                 }
-            }
+            }.animation(.linear, value: viewModel.state)
     }
 }

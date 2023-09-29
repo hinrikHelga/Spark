@@ -23,14 +23,13 @@ enum Priority: String, CaseIterable, Identifiable {
 struct ReportView: View {
     var incident: PaneIncidentDTO
     var approvedImage: UIImage
-    @State var priority: Priority = .li
     
     @State var paneId: String
     @State var category: String
-//    @State var priority: String
     @State var description: String
     @State var latitude: String
     @State var longitude: String
+    @State var priority: Priority = .li
 
     init(incident: PaneIncidentDTO, image: UIImage) {
         self.incident = incident
@@ -41,8 +40,8 @@ struct ReportView: View {
         
         _priority = State(initialValue: pr)
         _description = State(initialValue: incident.description ?? "")
-        _latitude = State(initialValue: "\(String(describing: incident.location?.lat))")
-        _longitude = State(initialValue: "\(String(describing: incident.location?.lng))")
+        _latitude = State(initialValue: "")
+        _longitude = State(initialValue: "")
     }
     
     var body: some View {
@@ -71,35 +70,38 @@ struct ReportView: View {
                 } header: {
                     Text("Pane")
                 }
+                
+                if let lat = incident.location?.lat, let lng = incident.location?.lng {
+                    Section {
+                        LabeledContent("Latitude", value: "\(lat)")
+                        LabeledContent("Longitude", value: "\(lng)")
+                    } header: {
+                        Text("Location")
+                    }
+                } else {
 
-                
-                Section {
-                    TextField("Latitude", text: $latitude)
-                } header: {
-                    Text("Latitude")
-                }
-                
-                Section {
-                    TextField("Longitude", text: $longitude)
-                } header: {
-                    Text("Longitude")
+                    Section {
+                        TextField("Latitude", text: $latitude)
+                    } header: {
+                        Text("Latitude")
+                    }
+                    
+                    Section {
+                        TextField("Longitude", text: $longitude)
+                    } header: {
+                        Text("Longitude")
+                    }
                 }
 
                 Section {
                     TextField("Category", text: $category)
-                } header: {
-                    Text("Category")
-                }
-                
-                Section {
                     Picker("Priority", selection: $priority) {
                         ForEach(Priority.allCases) { option in
                             Text(option.rawValue)
                         }
                     }
-
                 } header: {
-                    Text("Internet")
+                    Text("Category")
                 }
 
                 Section {
