@@ -31,16 +31,20 @@ struct CameraView: View {
                         ProgressView()
                         Spacer()
                     case .loaded:
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Rectangle())
-                            .frame(width: 400, height: 400)
-                            .padding()
-                        
-                        Text(viewModel.incident?.description ?? "")
-                            .frame(maxHeight: .infinity)
-                            .padding()
+                        ScrollView {
+                            VStack {
+                                Image(uiImage: selectedImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Rectangle())
+                                    .frame(width: 300, height: 300)
+                                    .padding()
+                                
+                                Text(viewModel.incident?.description ?? "")
+                                    .frame(maxHeight: .infinity)
+                                    .padding()
+                            }
+                        }
                         
                         NavigationLink(destination: ReportView(incident: viewModel.incident ?? PaneIncidentDTO(), image: viewModel.selectedImage)) {
                             Text("Approve")
@@ -65,7 +69,7 @@ struct CameraView: View {
                         }.padding()
                     }
                 }
-                .navigationBarTitle("Photo")
+                .navigationBarTitle("Spark")
                 .onChange(of: viewModel.selectedImage, perform: { img in
                     Task {
                         try await viewModel.uploadImage(selectedImage: img)

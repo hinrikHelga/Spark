@@ -66,9 +66,14 @@ struct ReportView: View {
 
                 Section {
                     TextField("Category", text: $category)
+                } header: {
+                    Text("Category")
+                }
+                
+                Section {
                     TextField("Priority", text: $priority)
                 } header: {
-                    Text("Information")
+                    Text("Priority")
                 }
 
                 Section {
